@@ -1,4 +1,6 @@
 import 'package:ecomm_app/controller/dashboard_controller.dart';
+import 'package:ecomm_app/view/account/account_screen.dart';
+import 'package:ecomm_app/view/category/category_screen.dart';
 import 'package:ecomm_app/view/home/home_screen.dart';
 import 'package:ecomm_app/view/product/product_screen.dart';
 import 'package:flutter/material.dart';
@@ -16,28 +18,21 @@ class DashboardScreen extends StatelessWidget {
         body: SafeArea(
           child: IndexedStack(
             index: controller.tabIndex,
-            children: [
-              const HomeScreen(),
-              const ProductScreen(),
-              Container(
-                color: Colors.blue,
-              ),
-              Container(
-                color: Colors.orange,
-              ),
+            children: const [
+              HomeScreen(),
+              ProductScreen(),
+              CategoryScreen(),
+              AccountScreen(),
             ],
           ),
         ),
         bottomNavigationBar: Container(
           decoration: BoxDecoration(
-            color: Colors.white,
-            border: Border(
-              top: BorderSide(
-                color: Theme.of(context).colorScheme.secondary,
-                width: 0.7,
-              ),
-            ),
-          ),
+              color: Colors.white,
+              border: Border(
+                  top: BorderSide(
+                      color: Theme.of(context).colorScheme.secondary,
+                      width: 0.7))),
           child: SnakeNavigationBar.color(
             behaviour: SnakeBarBehaviour.floating,
             snakeShape: SnakeShape.circle,
@@ -47,26 +42,34 @@ class DashboardScreen extends StatelessWidget {
             unselectedItemColor: Theme.of(context).colorScheme.secondary,
             showUnselectedLabels: true,
             currentIndex: controller.tabIndex,
-            onTap: (value) {
-              controller.updateIndex(value);
+            onTap: (val) {
+              controller.updateIndex(val);
             },
             items: const [
               BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: "Home",
+                icon: Icon(
+                  Icons.home,
+                ),
+                label: 'Home',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.category),
-                label: "Category",
+                icon: Icon(
+                  Icons.category,
+                ),
+                label: 'Products',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.menu),
-                label: "Menu",
+                icon: Icon(
+                  Icons.menu,
+                ),
+                label: 'Categories',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.account_circle),
-                label: "Account",
-              ),
+                icon: Icon(
+                  Icons.account_circle,
+                ),
+                label: 'Account',
+              )
             ],
           ),
         ),
