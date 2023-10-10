@@ -3,25 +3,22 @@ import 'package:ecomm_app/constants.dart';
 
 class RemoteProductService {
   var client = http.Client();
-  var remoteUrl = '$baseUrl/api/products';
+  var remoteUrl = '$baseUrl/api/v1/products/all';
 
   Future<dynamic> get() async {
-    var response =
-        await client.get(Uri.parse('$remoteUrl?populate=images,tags'));
+    var response = await client.get(Uri.parse(remoteUrl));
 
     return response;
   }
 
   Future<dynamic> getByName({required String keyword}) async {
-    var response = await client.get(Uri.parse(
-        '$remoteUrl?populate=images,tags&filters[name][\$contains]=$keyword'));
+    var response = await client.get(Uri.parse(remoteUrl));
 
     return response;
   }
 
-  Future<dynamic> getByCategory({required int id}) async {
-    var response = await client.get(
-        Uri.parse('$remoteUrl?populate=images,tags&filters[category][id]=$id'));
+  Future<dynamic> getByCategory({required String id}) async {
+    var response = await client.get(Uri.parse(remoteUrl));
 
     return response;
   }

@@ -22,7 +22,6 @@ class DashboardScreen extends StatelessWidget {
               HomeScreen(),
               ProductScreen(),
               CategoryScreen(),
-              AccountScreen(),
             ],
           ),
         ),
@@ -64,12 +63,6 @@ class DashboardScreen extends StatelessWidget {
                 ),
                 label: 'Categories',
               ),
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.account_circle,
-                ),
-                label: 'Account',
-              )
             ],
           ),
         ),

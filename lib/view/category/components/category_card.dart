@@ -28,7 +28,7 @@ class _CategoryCardState extends State<CategoryCard> {
           });
         },
         child: CachedNetworkImage(
-          imageUrl: baseUrl + widget.category.image,
+          imageUrl:  widget.category.photo ?? "https://hassanmokh.pythonanywhere.com/media/album/Banner/Banner_605e915d02f943daa50305766f37b7e2.png",
           imageBuilder: (context, imageProvider) => Material(
             elevation: 8,
             shadowColor: Colors.grey.shade300,

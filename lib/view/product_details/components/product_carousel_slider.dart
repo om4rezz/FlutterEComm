@@ -1,11 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:ecomm_app/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
 class ProductCarouselSlider extends StatefulWidget {
   final List<String> images;
+
   const ProductCarouselSlider({Key? key, required this.images})
       : super(key: key);
 
@@ -15,6 +15,7 @@ class ProductCarouselSlider extends StatefulWidget {
 
 class _ProductCarouselSliderState extends State<ProductCarouselSlider> {
   int _currentIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -28,7 +29,7 @@ class _ProductCarouselSliderState extends State<ProductCarouselSlider> {
                         child: Hero(
                           tag: e,
                           child: CachedNetworkImage(
-                            imageUrl: baseUrl + e,
+                            imageUrl: e,
                             imageBuilder: (context, imageProvider) => Container(
                               decoration: BoxDecoration(
                                   color: Colors.white,

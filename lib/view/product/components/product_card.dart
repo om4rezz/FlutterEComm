@@ -7,6 +7,7 @@ import 'package:shimmer/shimmer.dart';
 
 class ProductCard extends StatelessWidget {
   final Product product;
+
   const ProductCard({Key? key, required this.product}) : super(key: key);
 
   @override
@@ -35,7 +36,7 @@ class ProductCard extends StatelessWidget {
                   child: Hero(
                     tag: product.images.first,
                     child: CachedNetworkImage(
-                      imageUrl: baseUrl + product.images.first,
+                      imageUrl: product.images.first,
                       placeholder: (context, url) => Shimmer.fromColors(
                         highlightColor: Colors.white,
                         baseColor: Colors.grey.shade300,
@@ -62,7 +63,7 @@ class ProductCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
-                      product.name,
+                      product.title,
                       style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w500,
@@ -70,7 +71,7 @@ class ProductCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 5),
                     Text(
-                      '\$${product.tags.first.price.toStringAsFixed(2)}',
+                      '${product.fitness}',
                       style: const TextStyle(fontSize: 12, color: Colors.grey),
                     ),
                   ],

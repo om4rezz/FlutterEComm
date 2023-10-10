@@ -3,13 +3,12 @@ import 'package:ecomm_app/constants.dart';
 
 class RemotePopularProductService {
   var client = http.Client();
-  var remoteUrl = '$baseUrl/api/popular-products';
+  var remoteUrl = '$baseUrl/api/v1/products/all';
 
   Future<dynamic> get() async {
-    print('$remoteUrl?populate=product,product.images');
-    var response = await client
-        .get(Uri.parse('$remoteUrl?populate=product,product.images'));
-
+    print(remoteUrl);
+    var response = await client.get(Uri.parse(remoteUrl));
+    print("response:->  $response");
     return response;
   }
 }

@@ -17,7 +17,7 @@ class AdBannerAdapter extends TypeAdapter<AdBanner> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return AdBanner(
-      id: fields[0] as int,
+      id: fields[0] as String,
       image: fields[1] as String,
     );
   }

@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
   final Product product;
+
   const ProductDetailsScreen({Key? key, required this.product})
       : super(key: key);
 
@@ -16,6 +17,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   NumberFormat formatter = NumberFormat('00');
   int _qty = 1;
   int _tagIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +32,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Text(
-                widget.product.name,
+                widget.product.title,
                 style: TextStyle(
                     fontSize: 24,
                     color: Theme.of(context).primaryColor,
@@ -40,7 +42,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Text(
-                '\$${widget.product.tags.first.price.toStringAsFixed(2)}',
+                '${widget.product.fitness}',
                 style: TextStyle(
                     fontSize: 18,
                     color: Theme.of(context).primaryColor,
@@ -116,17 +118,17 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                           ),
                         ),
                         Text(
-                          widget.product.tags[_tagIndex].title,
+                          widget.product.fitness.toString(),
                           style: TextStyle(
                               fontSize: 18, color: Colors.grey.shade800),
                         ),
                         InkWell(
                           onTap: () {
-                            if (_tagIndex != (widget.product.tags.length - 1)) {
-                              setState(() {
-                                _tagIndex++;
-                              });
-                            }
+                            // if (_tagIndex != (widget.product.tags.length - 1)) {
+                            //   setState(() {
+                            //     _tagIndex++;
+                            //   });
+                            // }
                           },
                           child: Icon(
                             Icons.keyboard_arrow_right_sharp,

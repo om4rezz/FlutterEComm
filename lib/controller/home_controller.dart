@@ -18,15 +18,15 @@ class HomeController extends GetxController {
   RxBool isBannerLoading = false.obs;
   RxBool isPopularCategoryLoading = false.obs;
   RxBool isPopularProductLoading = false.obs;
-  final LocalAdBannerService _localAdBannerService = LocalAdBannerService();
-  final LocalProductService _localProductService = LocalProductService();
-  final LocalCategoryService _localCategoryService = LocalCategoryService();
+  // final LocalAdBannerService _localAdBannerService = LocalAdBannerService();
+  // final LocalProductService _localProductService = LocalProductService();
+  // final LocalCategoryService _localCategoryService = LocalCategoryService();
 
   @override
   void onInit() async {
-    await _localAdBannerService.init();
-    await _localCategoryService.init();
-    await _localProductService.init();
+    // await _localAdBannerService.init();
+    // await _localCategoryService.init();
+    // await _localProductService.init();
     getAdBanners();
     getPopularCategories();
     getPopularProducts();
@@ -37,17 +37,17 @@ class HomeController extends GetxController {
     try {
       isBannerLoading(true);
       // assigning local ad banners before call api
-      if (_localAdBannerService.getAdBanners().isNotEmpty) {
-        bannerList.assignAll(_localAdBannerService.getAdBanners());
-      }
+      // if (_localAdBannerService.getAdBanners().isNotEmpty) {
+      //   bannerList.assignAll(_localAdBannerService.getAdBanners());
+      // }
       // call API
       var result = await RemoteBannerService().get();
       if (result != null) {
         // assign API result
         bannerList.assignAll(adBannerListFromJson(result.body));
         // save API result to local db
-        _localAdBannerService.assignAllAdBanners(
-            adBanners: adBannerListFromJson(result.body));
+        // _localAdBannerService.assignAllAdBanners(
+        //     adBanners: adBannerListFromJson(result.body));
       }
     } finally {
       isBannerLoading(false);
@@ -58,18 +58,18 @@ class HomeController extends GetxController {
     try {
       isPopularCategoryLoading(true);
       // assigning local categories before call api
-      if (_localCategoryService.getPopularCategories().isNotEmpty) {
-        popularCategoryList
-            .assignAll(_localCategoryService.getPopularCategories());
-      }
+      // if (_localCategoryService.getPopularCategories().isNotEmpty) {
+      //   popularCategoryList
+      //       .assignAll(_localCategoryService.getPopularCategories());
+      // }
       // call API
       var result = await RemotePopularCategoryService().get();
       if (result != null) {
         // assign API result
         popularCategoryList.assignAll(popularCategoryListFromJson(result.body));
         // save API result to local db
-        _localCategoryService.assignAllPopularCategories(
-            popularCategories: popularCategoryListFromJson(result.body));
+        // _localCategoryService.assignAllPopularCategories(
+        //     popularCategories: popularCategoryListFromJson(result.body));
       }
     } finally {
       isPopularCategoryLoading(false);
@@ -80,17 +80,17 @@ class HomeController extends GetxController {
     try {
       isPopularProductLoading(true);
       // assigning local products before call api
-      if (_localProductService.getPopularProducts().isNotEmpty) {
-        popularProductList.assignAll(_localProductService.getPopularProducts());
-      }
+      // if (_localProductService.getPopularProducts().isNotEmpty) {
+      //   popularProductList.assignAll(_localProductService.getPopularProducts());
+      // }
       // call API
       var result = await RemotePopularProductService().get();
       if (result != null) {
         // assign API result
         popularProductList.assignAll(popularProductListFromJson(result.body));
         // save API result to local db
-        _localProductService.assignAllPopularProducts(
-            popularProducts: popularProductListFromJson(result.body));
+        // _localProductService.assignAllPopularProducts(
+        //     popularProducts: popularProductListFromJson(result.body));
       }
     } finally {
       isPopularProductLoading(false);

@@ -17,9 +17,9 @@ class CategoryAdapter extends TypeAdapter<Category> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Category(
-      id: fields[0] as int,
+      id: fields[0] as String,
       name: fields[1] as String,
-      image: fields[2] as String,
+      photo: fields[2] as String?,
     );
   }
 
@@ -32,7 +32,7 @@ class CategoryAdapter extends TypeAdapter<Category> {
       ..writeByte(1)
       ..write(obj.name)
       ..writeByte(2)
-      ..write(obj.image);
+      ..write(obj.photo);
   }
 
   @override
