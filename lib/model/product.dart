@@ -2,12 +2,11 @@ import 'dart:convert';
 
 import 'package:hive/hive.dart';
 
-import 'tag.dart';
-
 part 'product.g.dart';
 
-List<Product> popularProductListFromJson(String val) => List<Product>.from(
-    json.decode(val)['results'].map((val) => Product.popularProductFromJson(val)));
+List<Product> popularProductListFromJson(String val) => List<Product>.from(json
+    .decode(val)['results']
+    .map((val) => Product.popularProductFromJson(val)));
 
 List<Product> productListFromJson(String val) => List<Product>.from(
     json.decode(val)['results'].map((val) => Product.productFromJson(val)));

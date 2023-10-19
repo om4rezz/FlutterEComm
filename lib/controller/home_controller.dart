@@ -1,9 +1,6 @@
 import 'package:ecomm_app/model/ad_banner.dart';
 import 'package:ecomm_app/model/category.dart';
 import 'package:ecomm_app/model/product.dart';
-import 'package:ecomm_app/service/local_service/local_ad_banner_service.dart';
-import 'package:ecomm_app/service/local_service/local_category_service.dart';
-import 'package:ecomm_app/service/local_service/local_product_service.dart';
 import 'package:ecomm_app/service/remote_service/remote_banner_service.dart';
 import 'package:ecomm_app/service/remote_service/remote_popular_category_service.dart';
 import 'package:ecomm_app/service/remote_service/remote_popular_product_service.dart';

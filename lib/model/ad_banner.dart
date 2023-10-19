@@ -4,7 +4,7 @@ import 'package:hive/hive.dart';
 part 'ad_banner.g.dart';
 
 List<AdBanner> adBannerListFromJson(String value) => List<AdBanner>.from(
-    json.decode(value)['photos'].map((banner) => AdBanner.fromJson(banner)));
+    json.decode(value)['results'].map((banner) => AdBanner.fromJson(banner)));
 
 @HiveType(typeId: 1)
 class AdBanner {
@@ -17,6 +17,6 @@ class AdBanner {
 
   factory AdBanner.fromJson(Map<String, dynamic> data) => AdBanner(
         id: data['id'],
-        image: data['url'],
+        image: data['photo'],
       );
 }
