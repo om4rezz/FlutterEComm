@@ -27,7 +27,7 @@ class PopularProductCard extends StatelessWidget {
             AspectRatio(
               aspectRatio: 0.9,
               child: CachedNetworkImage(
-                imageUrl: baseUrl + product.images.first,
+                imageUrl: product.images.first,
                 placeholder: (context, url) => Shimmer.fromColors(
                   baseColor: Colors.grey.shade300,
                   highlightColor: Colors.white,

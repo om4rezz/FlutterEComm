@@ -1,5 +1,4 @@
 import 'package:ecomm_app/model/category.dart';
-import 'package:ecomm_app/service/local_service/local_category_service.dart';
 import 'package:ecomm_app/service/remote_service/remote_category_service.dart';
 import 'package:get/get.dart';
 

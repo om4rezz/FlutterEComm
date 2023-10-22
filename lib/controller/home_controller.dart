@@ -15,15 +15,9 @@ class HomeController extends GetxController {
   RxBool isBannerLoading = false.obs;
   RxBool isPopularCategoryLoading = false.obs;
   RxBool isPopularProductLoading = false.obs;
-  // final LocalAdBannerService _localAdBannerService = LocalAdBannerService();
-  // final LocalProductService _localProductService = LocalProductService();
-  // final LocalCategoryService _localCategoryService = LocalCategoryService();
 
   @override
   void onInit() async {
-    // await _localAdBannerService.init();
-    // await _localCategoryService.init();
-    // await _localProductService.init();
     getAdBanners();
     getPopularCategories();
     getPopularProducts();
@@ -33,18 +27,13 @@ class HomeController extends GetxController {
   void getAdBanners() async {
     try {
       isBannerLoading(true);
-      // assigning local ad banners before call api
-      // if (_localAdBannerService.getAdBanners().isNotEmpty) {
-      //   bannerList.assignAll(_localAdBannerService.getAdBanners());
-      // }
+
       // call API
       var result = await RemoteBannerService().get();
       if (result != null) {
         // assign API result
         bannerList.assignAll(adBannerListFromJson(result.body));
         // save API result to local db
-        // _localAdBannerService.assignAllAdBanners(
-        //     adBanners: adBannerListFromJson(result.body));
       }
     } finally {
       isBannerLoading(false);
@@ -55,18 +44,13 @@ class HomeController extends GetxController {
     try {
       isPopularCategoryLoading(true);
       // assigning local categories before call api
-      // if (_localCategoryService.getPopularCategories().isNotEmpty) {
-      //   popularCategoryList
-      //       .assignAll(_localCategoryService.getPopularCategories());
-      // }
+
       // call API
       var result = await RemotePopularCategoryService().get();
       if (result != null) {
         // assign API result
         popularCategoryList.assignAll(popularCategoryListFromJson(result.body));
         // save API result to local db
-        // _localCategoryService.assignAllPopularCategories(
-        //     popularCategories: popularCategoryListFromJson(result.body));
       }
     } finally {
       isPopularCategoryLoading(false);

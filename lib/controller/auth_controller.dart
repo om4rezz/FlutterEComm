@@ -2,18 +2,15 @@ import 'dart:convert';
 import 'package:ecomm_app/service/remote_service/remote_auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:ecomm_app/model/user.dart';
-import 'package:ecomm_app/service/local_service/local_auth_service.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 
 class AuthController extends GetxController {
   static AuthController instance = Get.find();
   Rxn<User> user = Rxn<User>();
-  final LocalAuthService _localAuthService = LocalAuthService();
 
   @override
   void onInit() async {
-    await _localAuthService.init();
     super.onInit();
   }
 
@@ -36,8 +33,6 @@ class AuthController extends GetxController {
             .createProfile(fullName: fullName, token: token);
         if (userResult.statusCode == 200) {
           user.value = userFromJson(userResult.body);
-          await _localAuthService.addToken(token: token);
-          await _localAuthService.addUser(user: user.value!);
           EasyLoading.showSuccess("Welcome to Nagm Ad-Din!");
           Navigator.of(Get.overlayContext!).pop();
         } else {
@@ -68,8 +63,6 @@ class AuthController extends GetxController {
         var userResult = await RemoteAuthService().getProfile(token: token);
         if (userResult.statusCode == 200) {
           user.value = userFromJson(userResult.body);
-          await _localAuthService.addToken(token: token);
-          await _localAuthService.addUser(user: user.value!);
           EasyLoading.showSuccess("Welcome to Nagm Ad-Din!");
           Navigator.of(Get.overlayContext!).pop();
         } else {
@@ -88,6 +81,5 @@ class AuthController extends GetxController {
 
   void signOut() async {
     user.value = null;
-    await _localAuthService.clear();
   }
 }

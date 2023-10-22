@@ -42,106 +42,106 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Text(
-                '${widget.product.fitness}',
+                '${widget.product.price} LE',
                 style: TextStyle(
                     fontSize: 18,
                     color: Theme.of(context).primaryColor,
                     fontWeight: FontWeight.w400),
               ),
             ),
-            const SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Row(
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                        border: Border.all(width: 1),
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(8))),
-                    child: Row(
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            if (_qty > 1) {
-                              setState(() {
-                                _qty--;
-                              });
-                            }
-                          },
-                          child: Icon(
-                            Icons.keyboard_arrow_left_sharp,
-                            size: 32,
-                            color: Colors.grey.shade800,
-                          ),
-                        ),
-                        Text(
-                          formatter.format(_qty),
-                          style: TextStyle(
-                              fontSize: 18, color: Colors.grey.shade800),
-                        ),
-                        InkWell(
-                          onTap: () {
-                            setState(() {
-                              _qty++;
-                            });
-                          },
-                          child: Icon(
-                            Icons.keyboard_arrow_right_sharp,
-                            size: 32,
-                            color: Colors.grey.shade800,
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  const SizedBox(width: 10),
-                  Container(
-                    decoration: BoxDecoration(
-                        border: Border.all(width: 1),
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(8))),
-                    child: Row(
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            if (_tagIndex > 0) {
-                              setState(() {
-                                _tagIndex--;
-                              });
-                            }
-                          },
-                          child: Icon(
-                            Icons.keyboard_arrow_left_sharp,
-                            size: 32,
-                            color: Colors.grey.shade800,
-                          ),
-                        ),
-                        Text(
-                          widget.product.fitness.toString(),
-                          style: TextStyle(
-                              fontSize: 18, color: Colors.grey.shade800),
-                        ),
-                        InkWell(
-                          onTap: () {
-                            // if (_tagIndex != (widget.product.tags.length - 1)) {
-                            //   setState(() {
-                            //     _tagIndex++;
-                            //   });
-                            // }
-                          },
-                          child: Icon(
-                            Icons.keyboard_arrow_right_sharp,
-                            size: 32,
-                            color: Colors.grey.shade800,
-                          ),
-                        )
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            ),
+            // const SizedBox(height: 20),
+            // Padding(
+            //   padding: const EdgeInsets.symmetric(horizontal: 10),
+            //   child: Row(
+            //     children: [
+            //       Container(
+            //         decoration: BoxDecoration(
+            //             border: Border.all(width: 1),
+            //             borderRadius:
+            //                 const BorderRadius.all(Radius.circular(8))),
+            //         child: Row(
+            //           children: [
+            //             InkWell(
+            //               onTap: () {
+            //                 if (_qty > 1) {
+            //                   setState(() {
+            //                     _qty--;
+            //                   });
+            //                 }
+            //               },
+            //               child: Icon(
+            //                 Icons.keyboard_arrow_left_sharp,
+            //                 size: 32,
+            //                 color: Colors.grey.shade800,
+            //               ),
+            //             ),
+            //             Text(
+            //               formatter.format(_qty),
+            //               style: TextStyle(
+            //                   fontSize: 18, color: Colors.grey.shade800),
+            //             ),
+            //             InkWell(
+            //               onTap: () {
+            //                 setState(() {
+            //                   _qty++;
+            //                 });
+            //               },
+            //               child: Icon(
+            //                 Icons.keyboard_arrow_right_sharp,
+            //                 size: 32,
+            //                 color: Colors.grey.shade800,
+            //               ),
+            //             )
+            //           ],
+            //         ),
+            //       ),
+            //       const SizedBox(width: 10),
+            //       Container(
+            //         decoration: BoxDecoration(
+            //             border: Border.all(width: 1),
+            //             borderRadius:
+            //                 const BorderRadius.all(Radius.circular(8))),
+            //         child: Row(
+            //           children: [
+            //             InkWell(
+            //               onTap: () {
+            //                 if (_tagIndex > 0) {
+            //                   setState(() {
+            //                     _tagIndex--;
+            //                   });
+            //                 }
+            //               },
+            //               child: Icon(
+            //                 Icons.keyboard_arrow_left_sharp,
+            //                 size: 32,
+            //                 color: Colors.grey.shade800,
+            //               ),
+            //             ),
+            //             Text(
+            //               widget.product.fitness.toString(),
+            //               style: TextStyle(
+            //                   fontSize: 18, color: Colors.grey.shade800),
+            //             ),
+            //             InkWell(
+            //               onTap: () {
+            //                 // if (_tagIndex != (widget.product.tags.length - 1)) {
+            //                 //   setState(() {
+            //                 //     _tagIndex++;
+            //                 //   });
+            //                 // }
+            //               },
+            //               child: Icon(
+            //                 Icons.keyboard_arrow_right_sharp,
+            //                 size: 32,
+            //                 color: Colors.grey.shade800,
+            //               ),
+            //             )
+            //           ],
+            //         ),
+            //       )
+            //     ],
+            //   ),
+            // ),
             const SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -163,24 +163,24 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: TextButton(
-          style: ButtonStyle(
-            foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-            backgroundColor: MaterialStateProperty.all<Color>(
-                Theme.of(context).primaryColor),
-          ),
-          onPressed: () {},
-          child: const Padding(
-            padding: EdgeInsets.all(6.0),
-            child: Text(
-              'Add to Card',
-              style: TextStyle(fontSize: 16),
-            ),
-          ),
-        ),
-      ),
+      // bottomNavigationBar: Padding(
+      //   padding: const EdgeInsets.all(8.0),
+      //   child: TextButton(
+      //     style: ButtonStyle(
+      //       foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+      //       backgroundColor: MaterialStateProperty.all<Color>(
+      //           Theme.of(context).primaryColor),
+      //     ),
+      //     onPressed: () {},
+      //     child: const Padding(
+      //       padding: EdgeInsets.all(6.0),
+      //       child: Text(
+      //         'Add to Card',
+      //         style: TextStyle(fontSize: 16),
+      //       ),
+      //     ),
+      //   ),
+      // ),
     );
   }
 }

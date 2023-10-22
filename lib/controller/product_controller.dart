@@ -34,7 +34,8 @@ class ProductController extends GetxController {
       isProductLoading(true);
       var result = await RemoteProductService().getByName(keyword: keyword);
       if (result != null) {
-        productList.assignAll(productListFromJson(result.body));
+        productList.assignAll(productListFromJson(result.body)
+            .where((element) => element.title.contains(keyword)));
       }
     } finally {
       isProductLoading(false);
@@ -47,7 +48,8 @@ class ProductController extends GetxController {
       isProductLoading(true);
       var result = await RemoteProductService().getByCategory(id: id);
       if (result != null) {
-        productList.assignAll(productListFromJson(result.body));
+        productList.assignAll(productListFromJson(result.body)
+            .where((element) => element.metalId == id));
       }
     } finally {
       isProductLoading(false);
