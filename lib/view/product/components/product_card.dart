@@ -34,9 +34,11 @@ class ProductCard extends StatelessWidget {
                 flex: 5,
                 child: Center(
                   child: Hero(
-                    tag: product.images.first,
+                    tag: product.images?.firstOrNull ??
+                        "https://hassanmokh.pythonanywhere.com/media/album/Banner/Banner_605e915d02f943daa50305766f37b7e2.png",
                     child: CachedNetworkImage(
-                      imageUrl: product.images.first,
+                      imageUrl: product.images?.firstOrNull ??
+                          "https://hassanmokh.pythonanywhere.com/media/album/Banner/Banner_605e915d02f943daa50305766f37b7e2.png",
                       placeholder: (context, url) => Shimmer.fromColors(
                         highlightColor: Colors.white,
                         baseColor: Colors.grey.shade300,
@@ -64,6 +66,7 @@ class ProductCard extends StatelessWidget {
                   children: [
                     Text(
                       product.title,
+                      maxLines: 2,
                       style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w500,

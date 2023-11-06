@@ -18,7 +18,7 @@ class Product {
   @HiveField(2)
   final String description;
   @HiveField(3)
-  final List<String> images;
+  final List<String?>? images;
   @HiveField(4)
   final double fitness;
   @HiveField(5)

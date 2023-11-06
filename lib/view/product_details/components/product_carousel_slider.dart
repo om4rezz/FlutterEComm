@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
 class ProductCarouselSlider extends StatefulWidget {
-  final List<String> images;
+  final List<String?> images;
 
   const ProductCarouselSlider({Key? key, required this.images})
       : super(key: key);
@@ -27,9 +27,11 @@ class _ProductCarouselSliderState extends State<ProductCarouselSlider> {
                   .map((e) => Container(
                         color: Colors.white,
                         child: Hero(
-                          tag: e,
+                          tag: e ??
+                              "https://hassanmokh.pythonanywhere.com/media/album/Banner/Banner_605e915d02f943daa50305766f37b7e2.png",
                           child: CachedNetworkImage(
-                            imageUrl: e,
+                            imageUrl: e ??
+                                "https://hassanmokh.pythonanywhere.com/media/album/Banner/Banner_605e915d02f943daa50305766f37b7e2.png",
                             imageBuilder: (context, imageProvider) => Container(
                               decoration: BoxDecoration(
                                   color: Colors.white,

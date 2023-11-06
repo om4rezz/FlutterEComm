@@ -26,7 +26,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ProductCarouselSlider(
-              images: widget.product.images,
+              images: widget.product.images ?? [],
             ),
             const SizedBox(height: 10),
             Padding(
