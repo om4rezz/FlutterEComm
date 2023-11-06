@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:ecomm_app/model/category.dart';
 import 'package:ecomm_app/service/remote_service/remote_category_service.dart';
 import 'package:get/get.dart';
@@ -23,9 +25,9 @@ class CategoryController extends GetxController {
       // }
       var result = await RemoteCategoryService().get();
       if (result != null) {
-        categoryList.assignAll(categoryListFromJson(result.body));
+        categoryList.assignAll(categoryListFromJson(utf8.decode(result.bodyBytes)));
         // _localCategoryService.assignAllCategories(
-        //     categories: categoryListFromJson(result.body));
+        //     categories: categoryListFromJson(utf8.decode(result.bodyBytes)));
       }
     } finally {
       isCategoryLoading(false);

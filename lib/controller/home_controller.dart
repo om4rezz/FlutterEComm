@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:ecomm_app/model/ad_banner.dart';
 import 'package:ecomm_app/model/category.dart';
 import 'package:ecomm_app/model/product.dart';
@@ -32,7 +34,7 @@ class HomeController extends GetxController {
       var result = await RemoteBannerService().get();
       if (result != null) {
         // assign API result
-        bannerList.assignAll(adBannerListFromJson(result.body));
+        bannerList.assignAll(adBannerListFromJson(utf8.decode(result.bodyBytes)));
         // save API result to local db
       }
     } finally {
@@ -49,7 +51,7 @@ class HomeController extends GetxController {
       var result = await RemotePopularCategoryService().get();
       if (result != null) {
         // assign API result
-        popularCategoryList.assignAll(popularCategoryListFromJson(result.body));
+        popularCategoryList.assignAll(popularCategoryListFromJson(utf8.decode(result.bodyBytes)));
         // save API result to local db
       }
     } finally {
@@ -68,10 +70,10 @@ class HomeController extends GetxController {
       var result = await RemotePopularProductService().get();
       if (result != null) {
         // assign API result
-        popularProductList.assignAll(popularProductListFromJson(result.body));
+        popularProductList.assignAll(popularProductListFromJson(utf8.decode(result.bodyBytes)));
         // save API result to local db
         // _localProductService.assignAllPopularProducts(
-        //     popularProducts: popularProductListFromJson(result.body));
+        //     popularProducts: popularProductListFromJson(utf8.decode(result.bodyBytes)));
       }
     } finally {
       isPopularProductLoading(false);

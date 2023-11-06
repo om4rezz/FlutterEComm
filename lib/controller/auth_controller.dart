@@ -28,7 +28,7 @@ class AuthController extends GetxController {
         password: password,
       );
       if (result.statusCode == 200) {
-        String token = json.decode(result.body)['jwt'];
+        String token = json.decode(utf8.decode(result.bodyBytes))['jwt'];
         var userResult = await RemoteAuthService()
             .createProfile(fullName: fullName, token: token);
         if (userResult.statusCode == 200) {
@@ -59,7 +59,7 @@ class AuthController extends GetxController {
         password: password,
       );
       if (result.statusCode == 200) {
-        String token = json.decode(result.body)['jwt'];
+        String token = json.decode(utf8.decode(result.bodyBytes))['jwt'];
         var userResult = await RemoteAuthService().getProfile(token: token);
         if (userResult.statusCode == 200) {
           user.value = userFromJson(userResult.body);

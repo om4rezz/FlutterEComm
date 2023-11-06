@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:ecomm_app/model/product.dart';
 import 'package:ecomm_app/service/remote_service/remote_product_service.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +23,8 @@ class ProductController extends GetxController {
       isProductLoading(true);
       var result = await RemoteProductService().get();
       if (result != null) {
-        productList.assignAll(productListFromJson(result.body));
+        productList
+            .assignAll(productListFromJson(utf8.decode(result.bodyBytes)));
       }
     } finally {
       isProductLoading(false);
@@ -34,7 +37,7 @@ class ProductController extends GetxController {
       isProductLoading(true);
       var result = await RemoteProductService().getByName(keyword: keyword);
       if (result != null) {
-        productList.assignAll(productListFromJson(result.body)
+        productList.assignAll(productListFromJson(utf8.decode(result.bodyBytes))
             .where((element) => element.title.contains(keyword)));
       }
     } finally {
@@ -48,7 +51,7 @@ class ProductController extends GetxController {
       isProductLoading(true);
       var result = await RemoteProductService().getByCategory(id: id);
       if (result != null) {
-        productList.assignAll(productListFromJson(result.body)
+        productList.assignAll(productListFromJson(utf8.decode(result.bodyBytes))
             .where((element) => element.metalId == id));
       }
     } finally {
