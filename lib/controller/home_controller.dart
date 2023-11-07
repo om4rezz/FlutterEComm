@@ -3,9 +3,11 @@ import 'dart:convert';
 import 'package:ecomm_app/model/ad_banner.dart';
 import 'package:ecomm_app/model/category.dart';
 import 'package:ecomm_app/model/product.dart';
+import 'package:ecomm_app/model/live_pricing.dart';
 import 'package:ecomm_app/service/remote_service/remote_banner_service.dart';
 import 'package:ecomm_app/service/remote_service/remote_popular_category_service.dart';
 import 'package:ecomm_app/service/remote_service/remote_popular_product_service.dart';
+import 'package:ecomm_app/service/remote_service/remote_live_pricing_service.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
@@ -17,12 +19,15 @@ class HomeController extends GetxController {
   RxBool isBannerLoading = false.obs;
   RxBool isPopularCategoryLoading = false.obs;
   RxBool isPopularProductLoading = false.obs;
+  RxBool isLivePricingLoading = false.obs;
+  RxList<LivePricingModel> livePricingList = List<LivePricingModel>.empty(growable: true).obs;
 
   @override
   void onInit() async {
     getAdBanners();
     getPopularCategories();
     getPopularProducts();
+    getLivePricing();
     super.onInit();
   }
 
@@ -77,6 +82,18 @@ class HomeController extends GetxController {
       }
     } finally {
       isPopularProductLoading(false);
+    }
+  }
+
+  void getLivePricing() async {
+    try {
+      isLivePricingLoading(true);
+      var result = await RemoteLivePricingService().get();
+      if (result != null) {
+        livePricingList.assignAll(livePricingListFromJson(utf8.decode(result.bodyBytes)));
+      }
+    } finally {
+      isLivePricingLoading(false);
     }
   }
 }

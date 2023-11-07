@@ -6,6 +6,7 @@ import 'package:ecomm_app/view/home/components/popular_category/popular_category
 import 'package:ecomm_app/view/home/components/popular_category/popular_category_loading.dart';
 import 'package:ecomm_app/view/home/components/popular_product/popular_product.dart';
 import 'package:ecomm_app/view/home/components/popular_product/popular_product_loading.dart';
+import 'package:ecomm_app/view/home/components/live_pricing/live_pricing_card.dart';
 import 'package:ecomm_app/view/home/components/section_title.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -29,6 +30,14 @@ class HomeScreen extends StatelessWidget {
                       return CarouselSliderView(
                         bannerList: homeController.bannerList,
                       );
+                    } else {
+                      return CarouselLoading();
+                    }
+                  }),
+                  Obx(() {
+                    if (homeController.livePricingList.isNotEmpty) {
+                      return LivePricingCard(
+                          livePricesList: homeController.livePricingList);
                     } else {
                       return CarouselLoading();
                     }
