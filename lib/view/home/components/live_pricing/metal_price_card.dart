@@ -15,19 +15,19 @@ class MetalPriceCard extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(10),
         child: Container(
-          width: 130,
+          width: 180,
           height: 130,
           color: metalItem.color,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                metalItem.name ?? '',
+                metalItem.price ?? '',
                 style: TextStyle(fontSize: 23, color: Colors.white, fontWeight: FontWeight.bold,),
               ),
               SizedBox(height: 20.0),
               Text(
-                metalItem.price ?? '',
+                metalItem.name ?? '',
                 style: TextStyle(fontSize: 23, color: Colors.white, fontWeight: FontWeight.bold,),
               ),
             ],

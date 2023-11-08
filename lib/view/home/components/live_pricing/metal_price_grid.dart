@@ -18,7 +18,7 @@ class MetalsPricesGrid extends StatelessWidget {
         children: [
           Row(
               children:[
-                SizedBox(width: 75),
+                SizedBox(width: 25),
                 MetalPriceCard(metalItem: gold24Metal),
                 SizedBox(width: 20),
                 MetalPriceCard(metalItem: gold21Metal),
@@ -26,7 +26,7 @@ class MetalsPricesGrid extends StatelessWidget {
           SizedBox(height: 20),
           Row(
               children:[
-                SizedBox(width: 75),
+                SizedBox(width: 25),
                 MetalPriceCard(metalItem: gold18Metal),
                 SizedBox(width: 20),
                 MetalPriceCard(metalItem: silverMetal),

@@ -110,14 +110,14 @@ class HomeController extends GetxController {
   Metal? getGold21Metal() {
     Metal gold21 = Metal(name: 'عيار 21',
         price: livePricingList[1].local_sell.toString(),
-        color: Color(0xFFE5AA0D));
+        color: Color(0xFFF1C40F));
     return gold21;
   }
 
   Metal? getGold18Metal() {
     Metal gold18 = Metal(name: 'عيار 18',
         price: livePricingList[1].sell_kirat_18.toString(),
-        color: Color(0xFFB8860B));
+        color: Color(0xFFE6BF3E));
     return gold18;
   }
 
