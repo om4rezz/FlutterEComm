@@ -1,7 +1,10 @@
 import 'package:ecomm_app/component/main_header.dart';
 import 'package:ecomm_app/controller/controllers.dart';
+import 'package:ecomm_app/model/metal_Item.dart';
 import 'package:ecomm_app/view/home/components/carousel_slider/carousel_loading.dart';
 import 'package:ecomm_app/view/home/components/carousel_slider/carousel_slider_view.dart';
+import 'package:ecomm_app/view/home/components/live_pricing/metal_price_card.dart';
+import 'package:ecomm_app/view/home/components/live_pricing/metal_price_grid.dart';
 import 'package:ecomm_app/view/home/components/popular_category/popular_category.dart';
 import 'package:ecomm_app/view/home/components/popular_category/popular_category_loading.dart';
 import 'package:ecomm_app/view/home/components/popular_product/popular_product.dart';
@@ -34,14 +37,19 @@ class HomeScreen extends StatelessWidget {
                       return CarouselLoading();
                     }
                   }),
+                  SizedBox(height: 10),
                   Obx(() {
-                    if (homeController.livePricingList.isNotEmpty) {
-                      return LivePricingCard(
-                          livePricesList: homeController.livePricingList);
-                    } else {
+                    if (homeController.livePricingList.isEmpty) {
                       return CarouselLoading();
+                    } else {
+                      return MetalsPricesGrid(
+                          gold24Metal: homeController.getGold24Metal()!,
+                          gold21Metal: homeController.getGold21Metal()!,
+                          gold18Metal: homeController.getGold18Metal()!,
+                          silverMetal: homeController.getSilverMetal()!);
                     }
                   }),
+                  SizedBox(height: 10),
                   const SectionTitle(title: "Popular Category"),
                   Obx(() {
                     if (homeController.popularCategoryList.isNotEmpty) {

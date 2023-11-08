@@ -1,13 +1,16 @@
 import 'dart:convert';
+import 'dart:ui';
 
 import 'package:ecomm_app/model/ad_banner.dart';
 import 'package:ecomm_app/model/category.dart';
+import 'package:ecomm_app/model/metal_Item.dart';
 import 'package:ecomm_app/model/product.dart';
 import 'package:ecomm_app/model/live_pricing.dart';
 import 'package:ecomm_app/service/remote_service/remote_banner_service.dart';
 import 'package:ecomm_app/service/remote_service/remote_popular_category_service.dart';
 import 'package:ecomm_app/service/remote_service/remote_popular_product_service.dart';
 import 'package:ecomm_app/service/remote_service/remote_live_pricing_service.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
@@ -95,5 +98,33 @@ class HomeController extends GetxController {
     } finally {
       isLivePricingLoading(false);
     }
+  }
+
+  Metal? getGold24Metal() {
+    Metal gold24 = Metal(name: 'عيار 24',
+        price: livePricingList[1].sell_kirat_24.toString(),
+        color: Color(0xFFFFD700));
+    return gold24;
+  }
+
+  Metal? getGold21Metal() {
+    Metal gold21 = Metal(name: 'عيار 21',
+        price: livePricingList[1].local_sell.toString(),
+        color: Color(0xFFE5AA0D));
+    return gold21;
+  }
+
+  Metal? getGold18Metal() {
+    Metal gold18 = Metal(name: 'عيار 18',
+        price: livePricingList[1].sell_kirat_18.toString(),
+        color: Color(0xFFB8860B));
+    return gold18;
+  }
+
+  Metal? getSilverMetal() {
+    Metal silver = Metal(name: 'فضة',
+        price: livePricingList[0].local_sell.toString(),
+        color: Color(0xFFC0C0C0));
+    return silver;
   }
 }
