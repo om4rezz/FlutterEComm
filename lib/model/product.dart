@@ -27,6 +27,8 @@ class Product {
   final String brandId;
   @HiveField(7)
   final String metalId;
+  @HiveField(8)
+  final int? totalFees;
 
   Product({
     required this.id,
@@ -37,6 +39,7 @@ class Product {
     required this.price,
     required this.brandId,
     required this.metalId,
+    required this.totalFees,
   });
 
   factory Product.popularProductFromJson(Map<String, dynamic> data) => Product(
@@ -49,7 +52,8 @@ class Product {
         price: data['price'],
         brandId: data['brand']['id'],
         metalId: data['metal_type']['id'],
-      );
+        totalFees: data['fees']['total_fees']
+  );
 
   factory Product.productFromJson(Map<String, dynamic> data) => Product(
         id: data['id'],
@@ -61,5 +65,6 @@ class Product {
         price: data['price'],
         brandId: data['brand']['id'],
         metalId: data['metal_type']['id'],
+        totalFees: data['fees']['total_fees']
       );
 }
