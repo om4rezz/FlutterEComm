@@ -1,5 +1,6 @@
 import 'package:ecomm_app/model/product.dart';
 import 'package:ecomm_app/view/product_details/components/product_carousel_slider.dart';
+import 'package:ecomm_app/view/product_details/components/whatsApp_redirection_button.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -159,7 +160,15 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 widget.product.description,
                 style: TextStyle(fontSize: 16, color: Colors.grey.shade700),
               ),
-            )
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: WhatsAppRedirectionButton(
+                  phoneNumber: "+201033449905",
+                  message: 'لقد وجدت هذا المنتج:',
+                  productName: widget.product.title,
+                  productImageURL: widget.product.images?.first ?? ''),
+            ),
           ],
         ),
       ),
