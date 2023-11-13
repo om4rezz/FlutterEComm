@@ -22,7 +22,7 @@ class Product {
   @HiveField(4)
   final double fitness;
   @HiveField(5)
-  final int price;
+  final int? price;
   @HiveField(6)
   final String brandId;
   @HiveField(7)

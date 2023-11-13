@@ -43,7 +43,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Text(
-                '${widget.product.price + (widget.product.totalFees ?? 0)} LE',
+                '${(widget.product.price ?? 0) + (widget.product.totalFees ?? 0)} LE',
                 style: TextStyle(
                     fontSize: 18,
                     color: Theme.of(context).primaryColor,
